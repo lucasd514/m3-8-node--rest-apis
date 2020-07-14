@@ -36,5 +36,20 @@ function createNewGuy(req, res) {
     res.status(200).send("new homey added to the little friends");
   }
 }
-
-module.exports = { handleClients, createNewGuy, handleClient, handle404 };
+function removeClient(req, res) {
+  const clientID = req.params.id;
+  const client = findClient(clientID);
+  if (client) {
+    clients.splice(client, 1);
+    res.status(200).send("bye felicia");
+  } else {
+    res.status(404).send("felicia doesnt live here anymore");
+  }
+}
+module.exports = {
+  handleClients,
+  createNewGuy,
+  handleClient,
+  handle404,
+  removeClient,
+};

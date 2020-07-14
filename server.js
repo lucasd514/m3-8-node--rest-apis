@@ -7,6 +7,7 @@ const {
   handleClient,
   handle404,
   createNewGuy,
+  removeClient,
 } = require("./handlers/clientHandlers.js");
 express()
   .use(function (req, res, next) {
@@ -26,4 +27,5 @@ express()
   .get("/clients/:id", handleClient)
   .get("/*", handle404)
   .post("/clients", createNewGuy)
+  .delete("/clients/:id", removeClient)
   .listen(8000, () => console.log(`Listening on port 8000`));
